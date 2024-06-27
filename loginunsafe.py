@@ -12,12 +12,12 @@ class BadLoginManager:
 
     def login(self, username, password):
         self.connect_to_db()
-
-        query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
-        self.cursor.execute(query)
-
+    
+        query = "SELECT * FROM users WHERE username = %s AND password = %s"
+        self.cursor.execute(query, (username, password))
+    
         result = self.cursor.fetchone()
-
+    
         if result:
             return True  # Login successful
         else:
