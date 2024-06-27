@@ -34,7 +34,9 @@ IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'categ
 BEGIN
     CREATE TABLE categories (
         category_id INT PRIMARY KEY,
-        category_name NVARCHAR(50) NOT NULL
+        category_name NVARCHAR(50) NOT NULL,
+        -- add an optional 'Description' column to store a description of the category
+        description NVARCHAR(255)
     )
 END
 
